@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 
 export function Signup() {
@@ -38,7 +40,7 @@ export function Signup() {
     setLoading(true); // Disable button while submitting
 
     try {
-      const response = await fetch("http://localhost:4000/signup", {
+      const response = await fetch(`${apiUrl}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

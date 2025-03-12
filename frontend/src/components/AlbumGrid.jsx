@@ -5,6 +5,8 @@ import { Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
 import { Header } from "./Header";
 import { FaTrashAlt } from 'react-icons/fa'; // ✅ Import Trash icon from react-icons
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 const AlbumGrid = () => {
   const dispatch = useDispatch();
@@ -45,7 +47,7 @@ const AlbumGrid = () => {
 
     try {
       // Use fetch() instead of axios
-      const response = await fetch("http://localhost:4000/addalbum", {
+      const response = await fetch(`${apiUrl}/addalbum`, {
         method: "POST",
         body: formData, // Send as FormData
       });
@@ -82,7 +84,7 @@ const AlbumGrid = () => {
     setShowDeleteModal(false); // Close delete confirmation modal
 
     try {
-      const response = await fetch("http://localhost:4000/deletealbum", {
+      const response = await fetch(`${apiUrl}/deletealbum`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -23,7 +23,7 @@ cloudinary.config({
   });
 
 
-mongoose.connect('mongodb+srv://bhaskarvilapar:Bhadra19@cluster0.npm84.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(`mongodb+srv://bhaskarvilapar:${process.env.MONGO_PW}@cluster0.npm84.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
 .then(() => {
     console.log("Mongodb connection succesful");
 }).catch((e) => {

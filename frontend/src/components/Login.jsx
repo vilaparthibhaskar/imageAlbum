@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {change_albums, change_name, change_loggedin, change_email, update_token, update_userid } from '../store/slice/userSlice'
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 export function LoginPage() {
   const navigate = useNavigate(); 
@@ -16,7 +18,7 @@ export function LoginPage() {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    const response = await fetch('http://localhost:4000/login', {
+    const response = await fetch(`${apiUrl}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

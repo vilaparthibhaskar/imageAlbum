@@ -9,6 +9,8 @@ import { Header } from './Header';
 import { Modal, Button } from "react-bootstrap";
 import { FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
 import { FaTrashAlt } from 'react-icons/fa'; // ✅ Import Trash icon from react-icons
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 
 const ImageGallery = () => {
@@ -35,7 +37,7 @@ const ImageGallery = () => {
       setShowDeleteModal(false); // Close the delete confirmation modal
     
       try {
-        const response = await fetch("http://localhost:4000/deleteimage", {
+        const response = await fetch(`${apiUrl}/deleteimage`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -70,7 +72,7 @@ const ImageGallery = () => {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/albums/${title}?userid=${userid}`, {
+        const response = await fetch(`${apiUrl}/albums/${title}?userid=${userid}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -242,7 +244,7 @@ const ImageGallery = () => {
     formData.append('image', newImage);
 
     try {
-      const response = await fetch('http://localhost:4000/uploadpic', {
+      const response = await fetch(`${apiUrl}/uploadpic`, {
         method: 'POST',
         body: formData
       });
@@ -402,7 +404,7 @@ const ImageGallery = () => {
       {/* Display caption for the front image */}
       {index === frontIndex && (
         <div
-        className='fw-bold'
+        className='fw-boldg'
           style={{
             position: 'absolute',
             bottom: '-50px',
