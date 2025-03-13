@@ -369,7 +369,7 @@ const ImageGallery = () => {
     style={getCarouselImageStyle(index, rotation, angleStep, radius)}
   >
     {/* Container for the image with relative positioning */}
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative', bottom:'50px' }}>
       <RomanticFrame>
         <img
           src={pic.url}
@@ -404,10 +404,10 @@ const ImageGallery = () => {
       {/* Display caption for the front image */}
       {index === frontIndex && (
         <div
-        className='fw-boldg'
+        className='fw-bold'
           style={{
             position: 'absolute',
-            bottom: '-50px',
+            bottom: '-130px',
             width: '100%',
             textAlign: 'center',
             color: 'white',

@@ -116,7 +116,7 @@ const AlbumGrid = () => {
   // ✅ Navigate to album details page
   const handleAlbumClick = (title) => {
     const encodedTitle = encodeURIComponent(title); // Encode title for URL safety
-    navigate(`/album/${encodedTitle}`);
+    navigate(`/album/${encodedTitle}/?userid=${userid}`);
   };
 
   return (

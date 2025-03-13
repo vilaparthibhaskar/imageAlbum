@@ -82,6 +82,7 @@ app.get("/albums/:title", async (req, res) => {
   try {
     const { userid } = req.query; // Extract userid from query parameters
     const { title } = req.params; // Extract title from URL
+    console.log(userid);
 
     if (!userid) {
       return res.status(400).json({ success: false, message: "User ID is required" });
