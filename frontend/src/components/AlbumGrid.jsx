@@ -123,53 +123,43 @@ const AlbumGrid = () => {
     <>
       <Header />
       <div className="container my-4">
-        <h2 className="mb-4">Albums</h2>
+        <h2 className="mb-4 fw-bold" style={{color:'#ffe5ec'}}>Albums</h2>
 
-        {/* Albums Grid */}
         <div className="row">
           {albums.map((album, index) => (
             <div key={index} className="col-md-4 mb-4">
-              <div
-                className="card"
-                style={{ cursor: "pointer", position: "relative" }}
-                onClick={() => handleAlbumClick(album.title)} // ✅ Navigate on click
-              >
-                <img src={album.url} className="card-img-top" alt={album.title} />
-                
-                {/* Delete Icon */}
-                <FaTrashAlt
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevent card click from being triggered
-                    setAlbumToDelete(album); // Set album to delete
-                    setShowDeleteModal(true); // Show delete confirmation modal
-                  }}
-                  style={{
-                    position: "absolute",
-                    top: "10px",
-                    right: "10px",
-                    fontSize: "1.5rem",
-                    color: "red",
-                    cursor: "pointer",
-                  }}
-                />
-                
-                <div className="card-body">
-                  <h5 className="card-title">{album.title}</h5>
-                </div>
+            <div className="album-card">
+              {/* Album Image */}
+              <img 
+                src={album.url} 
+                className="album-image"
+                alt={album.title}
+                onClick={() => handleAlbumClick(album.title)}
+              />
+          
+              {/* Trash Icon (Enlarged) */}
+              <FaTrashAlt
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setAlbumToDelete(album);
+                  setShowDeleteModal(true);
+                }}
+                className="delete-icon"
+              />
+          
+              {/* Title Below Image */}
+              <div className="album-title fw-bold" style={{color:'#90e0ef'}}>
+                <h5>{album.title}</h5>
               </div>
             </div>
+          </div>
+          
           ))}
 
-          {/* Add New Album Button (Last Grid Item) */}
+          {/* Add New Album Button */}
           <div className="col-md-4 mb-4">
             <div
-              className="d-flex align-items-center justify-content-center border rounded"
-              style={{
-                width: "100%",
-                height: "200px",
-                backgroundColor: "#f8f9fa",
-                cursor: "pointer",
-              }}
+              className="add-album-card"
               onClick={() => setShowModal(true)}
             >
               <h1 className="text-secondary">+</h1>
