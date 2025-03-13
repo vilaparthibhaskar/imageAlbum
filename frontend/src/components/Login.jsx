@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {change_albums, change_name, change_loggedin, change_email, update_token, update_userid } from '../store/slice/userSlice'
 const apiUrl = import.meta.env.VITE_API_URL;
+import { Link } from 'react-router-dom';
 
 
 export function LoginPage() {
@@ -72,7 +73,7 @@ export function LoginPage() {
             <button type="submit" className="btn btn-primary w-100">Login</button>
           </form>
           <p className="text-center text-muted mt-3">
-            Dont have an account? <a href="signup" className="text-primary">Sign up</a>
+            Don't have an account? <Link to="/signup" className="text-primary">Sign up</Link>
           </p>
         </div>
       </div>
